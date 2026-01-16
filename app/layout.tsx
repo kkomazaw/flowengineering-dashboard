@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SessionProvider } from "@/components/auth/SessionProvider";
 
 export const metadata: Metadata = {
   title: "Flow Engineering Dashboard",
@@ -14,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className="antialiased bg-gray-50">
-        {children}
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );

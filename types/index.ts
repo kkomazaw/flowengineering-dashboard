@@ -176,3 +176,36 @@ export interface JiraIssue {
     customfield_initiative?: string;
   };
 }
+
+// Authentication & Authorization
+export enum UserRole {
+  ADMIN = "admin",
+  MANAGER = "manager",
+  MEMBER = "member",
+  VIEWER = "viewer",
+}
+
+export enum Permission {
+  READ_DASHBOARD = "dashboard:read",
+  WRITE_DASHBOARD = "dashboard:write",
+  MANAGE_CONFIG = "config:manage",
+  MANAGE_USERS = "users:manage",
+  VIEW_ANALYTICS = "analytics:view",
+  EXPORT_DATA = "data:export",
+}
+
+export interface User {
+  id: string;
+  email: string;
+  name?: string;
+  image?: string;
+  role: UserRole;
+  teams?: string[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Session {
+  user: User;
+  expires: string;
+}
