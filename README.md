@@ -35,6 +35,14 @@
 - ✅ エクスポート/インポート: JSON/YAML形式での設定の共有
 - ✅ LocalStorage永続化: ブラウザへの設定保存
 
+**Phase 4 - 認証・権限 ✅ 完了**
+- ✅ NextAuth.js統合: 複数認証プロバイダー対応
+- ✅ ロールベースアクセス制御（RBAC）: Admin、Manager、Member、Viewerの4段階
+- ✅ 権限管理システム: 6種類の権限（読取、書込、設定管理、ユーザー管理等）
+- ✅ 保護されたルート: ミドルウェアによる自動リダイレクト
+- ✅ セッション管理: JWT戦略によるセキュアな認証
+- ✅ OAuth対応: GitHub/Google認証の準備完了
+
 **Phase 5 - 高度な分析 ✅ 完了**
 - ✅ トレンド分析: 週次/月次でのメトリクス推移の可視化
 - ✅ インタラクティブチャート: Lead Time、Cycle Time、Throughput、Flow Efficiencyのトレンド表示
@@ -48,6 +56,7 @@
 
 - **Frontend**: Next.js 15 + React 19 + TypeScript
 - **Styling**: Tailwind CSS
+- **Authentication**: NextAuth.js v5
 - **Data Sources**: GitHub REST API, Jira REST API
 - **State Management**: Zustand
 - **Data Visualization**: カスタムコンポーネント（Tailwind CSS）+ Recharts
@@ -193,13 +202,30 @@ Vercel にプッシュするだけで自動的にデプロイされます。
   - Work Type, Team, Estimate Size による絞り込み
   - アクティブフィルター数の表示
 
+## 使い方
+
+### 初回アクセス
+
+1. アプリケーションを起動すると、自動的にサインインページにリダイレクトされます
+2. デモ用の認証情報でログイン:
+   - **Admin**: admin@example.com / admin123
+   - **Manager**: manager@example.com / manager123
+   - **Member**: member@example.com / member123
+   - **Viewer**: viewer@example.com / viewer123
+
+### ロール別権限
+
+- **Admin**: すべての機能にアクセス可能（ユーザー管理含む）
+- **Manager**: 設定管理とアナリティクスにアクセス可能
+- **Member**: ダッシュボードの閲覧・編集が可能
+- **Viewer**: 読取専用アクセス
+
 ## 今後の拡張予定
 
-### Phase 4 - 認証・権限
-- [ ] SSO認証連携（Google/GitHub/Okta）
-- [ ] ロールベースアクセス制御
-- [ ] チーム別データアクセス制限
-- [ ] ユーザー管理とプロファイル
+### データベース統合
+- [ ] PostgreSQL/MySQL等のデータベース接続
+- [ ] ユーザー情報の永続化
+- [ ] チーム情報の管理
 
 ### 追加機能
 - [ ] カスタムメトリクスの追加
@@ -207,6 +233,8 @@ Vercel にプッシュするだけで自動的にデプロイされます。
 - [ ] 予測完了日の表示（Monte Carlo活用）
 - [ ] レポート生成・エクスポート
 - [ ] Slack/Teams通知連携
+- [ ] チーム別データアクセス制限
+- [ ] ユーザー管理UI
 
 ## ライセンス
 
