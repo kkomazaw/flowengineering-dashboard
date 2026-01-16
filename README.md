@@ -27,14 +27,33 @@
 - ✅ エラーハンドリング: エラー表示バナーとローディングスケルトン
 - ✅ GitHub/Jira API統合基盤: データサービス層とZustand状態管理
 
+**Phase 3 - カスタマイズ機能 ✅ 完了**
+- ✅ ステージ定義カスタマイズ: UI上でステージの追加・編集・削除
+- ✅ ドラッグ&ドロップ: ステージの順序変更
+- ✅ GitHub/Jiraマッピング設定: ステータスとラベルのマッピング設定
+- ✅ 設定プリセット管理: 複数の設定を保存・切り替え
+- ✅ エクスポート/インポート: JSON/YAML形式での設定の共有
+- ✅ LocalStorage永続化: ブラウザへの設定保存
+
+**Phase 5 - 高度な分析 ✅ 完了**
+- ✅ トレンド分析: 週次/月次でのメトリクス推移の可視化
+- ✅ インタラクティブチャート: Lead Time、Cycle Time、Throughput、Flow Efficiencyのトレンド表示
+- ✅ ボトルネック自動検出: WIP、平均時間、遷移効率に基づく検出
+- ✅ 重要度スコアリング: ボトルネックの深刻度評価（High/Medium/Low）
+- ✅ アクション可能な提案: ボトルネック解消のための具体的な改善提案
+- ✅ Monte Carloシミュレーション: 予測分析のための基盤
+- ✅ 期間選択: 1ヶ月、3ヶ月、6ヶ月、1年の分析期間
+
 ## 技術スタック
 
 - **Frontend**: Next.js 15 + React 19 + TypeScript
 - **Styling**: Tailwind CSS
 - **Data Sources**: GitHub REST API, Jira REST API
 - **State Management**: Zustand
-- **Data Visualization**: カスタムコンポーネント（Tailwind CSS）
+- **Data Visualization**: カスタムコンポーネント（Tailwind CSS）+ Recharts
+- **Drag & Drop**: @dnd-kit
 - **Date Handling**: date-fns
+- **Storage**: LocalStorage
 
 ## セットアップ
 
@@ -176,22 +195,18 @@ Vercel にプッシュするだけで自動的にデプロイされます。
 
 ## 今後の拡張予定
 
-### Phase 3 - カスタマイズ機能
-- [ ] UI上でのステージ定義カスタマイズ
-- [ ] 設定のエクスポート/インポート（YAML/JSON）
-- [ ] 複数のVSM設定プリセット管理
-- [ ] カスタムメトリクスの追加
-
 ### Phase 4 - 認証・権限
 - [ ] SSO認証連携（Google/GitHub/Okta）
 - [ ] ロールベースアクセス制御
 - [ ] チーム別データアクセス制限
+- [ ] ユーザー管理とプロファイル
 
-### Phase 5 - 高度な分析
-- [ ] トレンド分析（時系列グラフ）
-- [ ] ボトルネック自動検出
-- [ ] 予測分析（完了予測日等）
+### 追加機能
+- [ ] カスタムメトリクスの追加
 - [ ] A/Bテスト比較機能
+- [ ] 予測完了日の表示（Monte Carlo活用）
+- [ ] レポート生成・エクスポート
+- [ ] Slack/Teams通知連携
 
 ## ライセンス
 
