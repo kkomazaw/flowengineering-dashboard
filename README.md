@@ -52,6 +52,14 @@
 - ✅ Monte Carloシミュレーション: 予測分析のための基盤
 - ✅ 期間選択: 1ヶ月、3ヶ月、6ヶ月、1年の分析期間
 
+**Phase 6 - ユーザー管理 ✅ 完了**
+- ✅ ユーザー管理UI: ユーザーの作成・編集・削除画面
+- ✅ ユーザー一覧・検索: 名前、メール、ロール、チームでフィルタリング
+- ✅ ロール変更: Admin、Manager、Member、Viewerの権限変更
+- ✅ チーム割り当て: ユーザーへの複数チーム割り当て
+- ✅ 権限ガイド: ロール別の権限マトリックス表示
+- ✅ CRUD API: RESTful APIによるユーザー管理操作
+
 ## 技術スタック
 
 - **Frontend**: Next.js 15 + React 19 + TypeScript
@@ -110,10 +118,32 @@ npm run dev
 ```
 flowengineering-dashboard/
 ├── app/                    # Next.js App Router
+│   ├── admin/
+│   │   └── users/
+│   │       └── page.tsx   # ユーザー管理ページ
+│   ├── analytics/
+│   │   └── page.tsx       # アナリティクスページ
+│   ├── api/
+│   │   ├── auth/          # NextAuth APIルート
+│   │   └── users/         # ユーザー管理API
+│   ├── auth/
+│   │   └── signin/
+│   │       └── page.tsx   # サインインページ
 │   ├── layout.tsx         # ルートレイアウト
 │   ├── page.tsx           # トップページ
 │   └── globals.css        # グローバルスタイル
 ├── components/            # Reactコンポーネント
+│   ├── admin/             # 管理者用コンポーネント
+│   │   ├── UserManagementTable.tsx
+│   │   ├── CreateUserModal.tsx
+│   │   ├── EditUserModal.tsx
+│   │   └── RolePermissionsGuide.tsx
+│   ├── analytics/         # アナリティクス用コンポーネント
+│   │   ├── TrendChart.tsx
+│   │   └── BottleneckAlert.tsx
+│   ├── auth/              # 認証用コンポーネント
+│   │   ├── UserMenu.tsx
+│   │   └── SessionProvider.tsx
 │   ├── ValueStreamDashboard.tsx  # メインダッシュボード
 │   ├── ValueStreamFlow.tsx       # バリューストリーム図
 │   ├── MetricsCards.tsx          # メトリクスカード
@@ -126,17 +156,28 @@ flowengineering-dashboard/
 │   ├── ErrorBanner.tsx           # エラー表示バナー
 │   └── LoadingSkeleton.tsx       # ローディングスケルトン
 ├── lib/                   # ビジネスロジック
+│   ├── auth/              # 認証関連
+│   │   ├── auth.config.ts # NextAuth設定
+│   │   ├── auth.ts        # NextAuthエクスポート
+│   │   └── rbac.ts        # ロールベースアクセス制御
 │   ├── github-client.ts   # GitHub API クライアント
 │   ├── jira-client.ts     # Jira API クライアント
 │   ├── data-service.ts    # データサービス層
 │   ├── data-transformer.ts # データ変換ロジック
-│   └── metrics.ts         # メトリクス計算
+│   ├── metrics.ts         # メトリクス計算
+│   ├── time-series.ts     # 時系列分析
+│   ├── bottleneck-detection.ts # ボトルネック検出
+│   └── monte-carlo.ts     # Monte Carloシミュレーション
 ├── store/                 # 状態管理
-│   └── dashboard-store.ts # Zustandストア
+│   ├── dashboard-store.ts # ダッシュボード状態
+│   └── user-management-store.ts # ユーザー管理状態
 ├── types/                 # TypeScript型定義
 │   └── index.ts
 ├── docs/                  # ドキュメント
+│   ├── DESIGN.md          # 設計書
+│   ├── DEVELOPMENT_PLAN.md # 開発計画
 │   └── vsm-vision.png     # ビジョン画像
+├── middleware.ts          # Next.js ミドルウェア（認証保護）
 └── CLAUDE.md             # プロジェクト指示書
 ```
 
@@ -220,6 +261,17 @@ Vercel にプッシュするだけで自動的にデプロイされます。
 - **Member**: ダッシュボードの閲覧・編集が可能
 - **Viewer**: 読取専用アクセス
 
+### ユーザー管理（Admin専用）
+
+Adminロールでログインすると、ユーザーメニューから「User Management」にアクセスできます。
+
+主な機能:
+- ユーザーの作成・編集・削除
+- ロールの変更
+- チームの割り当て
+- ユーザー検索とフィルタリング
+- 権限マトリックスの表示
+
 ## 今後の拡張予定
 
 ### データベース統合
@@ -234,7 +286,7 @@ Vercel にプッシュするだけで自動的にデプロイされます。
 - [ ] レポート生成・エクスポート
 - [ ] Slack/Teams通知連携
 - [ ] チーム別データアクセス制限
-- [ ] ユーザー管理UI
+- [ ] 実際のGitHub/Jira APIとの連携
 
 ## ライセンス
 

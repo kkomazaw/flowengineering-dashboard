@@ -3,8 +3,8 @@
 import { signOut, useSession } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { getRoleName } from "@/lib/auth/rbac";
-import { UserRole } from "@/types";
+import { getRoleName, hasPermission } from "@/lib/auth/rbac";
+import { UserRole, Permission } from "@/types";
 
 export function UserMenu() {
   const { data: session } = useSession();
@@ -81,6 +81,16 @@ export function UserMenu() {
           >
             Profile Settings
           </Link>
+
+          {hasPermission(userRole, Permission.MANAGE_USERS) && (
+            <Link
+              href="/admin/users"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              onClick={() => setIsOpen(false)}
+            >
+              User Management
+            </Link>
+          )}
 
           <button
             onClick={() => signOut({ callbackUrl: "/auth/signin" })}

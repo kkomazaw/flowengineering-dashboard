@@ -16,7 +16,7 @@ import { UserRole } from "@/types";
  */
 
 // Mock user database (replace with real database in production)
-const mockUsers = [
+export const mockUsers = [
   {
     id: "1",
     email: "admin@example.com",
@@ -24,6 +24,8 @@ const mockUsers = [
     name: "Admin User",
     role: UserRole.ADMIN,
     teams: ["Platform", "Mobile"],
+    createdAt: new Date("2024-01-01"),
+    updatedAt: new Date("2024-01-01"),
   },
   {
     id: "2",
@@ -32,6 +34,8 @@ const mockUsers = [
     name: "Manager User",
     role: UserRole.MANAGER,
     teams: ["Platform"],
+    createdAt: new Date("2024-01-02"),
+    updatedAt: new Date("2024-01-02"),
   },
   {
     id: "3",
@@ -40,6 +44,8 @@ const mockUsers = [
     name: "Member User",
     role: UserRole.MEMBER,
     teams: ["Mobile"],
+    createdAt: new Date("2024-01-03"),
+    updatedAt: new Date("2024-01-03"),
   },
   {
     id: "4",
@@ -48,6 +54,8 @@ const mockUsers = [
     name: "Viewer User",
     role: UserRole.VIEWER,
     teams: [],
+    createdAt: new Date("2024-01-04"),
+    updatedAt: new Date("2024-01-04"),
   },
 ];
 
