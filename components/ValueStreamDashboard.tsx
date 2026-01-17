@@ -19,6 +19,7 @@ import WorkItemDetailModal from "./WorkItemDetailModal";
 import RefreshButton from "./RefreshButton";
 import ErrorBanner from "./ErrorBanner";
 import LoadingSkeleton from "./LoadingSkeleton";
+import DataSourceInfo from "./DataSourceInfo";
 
 export default function ValueStreamDashboard() {
   const [dateRange, setDateRange] = useState<DateRange>(() => {
@@ -377,6 +378,9 @@ export default function ValueStreamDashboard() {
 
       {/* Error Banner */}
       <ErrorBanner error={error} onDismiss={() => setError(null)} />
+
+      {/* Data Source Information */}
+      <DataSourceInfo lastUpdated={lastUpdated} />
 
       <DateRangeFilter dateRange={dateRange} onChange={setDateRange} />
 
