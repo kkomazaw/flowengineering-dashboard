@@ -143,14 +143,14 @@ NEXTAUTH_URL=http://localhost:3001
 NEXTAUTH_SECRET=test-secret-key-for-development-only
 
 # GitHub API Configuration
-NEXT_PUBLIC_GITHUB_TOKEN=ghp_1234567890abcdefghijklmnopqrstuvwxyz
+NEXT_PUBLIC_GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 NEXT_PUBLIC_GITHUB_ORG=acme-corp
 NEXT_PUBLIC_GITHUB_REPO=backend-api
 
 # Jira API Configuration
 NEXT_PUBLIC_JIRA_URL=https://acme.atlassian.net
 NEXT_PUBLIC_JIRA_EMAIL=john.doe@acme.com
-NEXT_PUBLIC_JIRA_API_TOKEN=ATATT3xFfGF0T1234567890abcdefghijklmnop
+NEXT_PUBLIC_JIRA_API_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 NEXT_PUBLIC_JIRA_PROJECT_KEY=TEAM
 ```
 
